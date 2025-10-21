@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabinet d'Expertise Comptable | RCA</title>
+    <!-- Chargement de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configuration Tailwind pour des couleurs corporate et dynamiques
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'rca-blue': '#003366', // Bleu marine professionnel
+                        'rca-gold': '#FFCC00', // Or/Jaune vif pour l'accent dynamique
+                        'rca-light': '#F5F9FF', // Bleu très clair pour les fonds
+                        'rca-text': '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* Styles personnalisés pour améliorer l'esthétique */
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 51, 102, 0.15);
+        }
+        .rca-gradient {
+            background: linear-gradient(90deg, #003366 0%, #005080 100%);
+        }
+        /* Style pour les liens de navigation actifs */
+        #main-nav a.active {
+            background-color: var(--tw-colors-rca-gold);
+            color: var(--tw-colors-rca-blue);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-white font-sans text-rca-text">
+
+    <!-- Header & Navigation (Fixe) -->
+    <header class="sticky top-0 z-50 shadow-lg rca-gradient">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo du Cabinet -->
+            <div class="text-xl font-extrabold text-white">
+                <span class="text-rca-gold">EXPERT-COMPTA</span> RCA
+            </div>
+
+            <!-- Navigation Principale (Desktop) -->
+            <nav id="main-nav" class="hidden md:flex space-x-2 lg:space-x-4">
+                <a href="#accueil" data-page="accueil" class="px-3 py-2 rounded-lg text-sm font-medium transition duration-300 text-white hover:bg-rca-gold hover:text-rca-blue">Accueil</a>
+                <a href="#services" data-page="services" class="px-3 py-2 rounded-lg text-sm font-medium transition duration-300 text-white hover:bg-rca-gold hover:text-rca-blue">Nos Services</a>
+                <a href="#cabinet" data-page="cabinet" class="px-3 py-2 rounded-lg text-sm font-medium transition duration-300 text-white hover:bg-rca-gold hover:text-rca-blue">Le Cabinet</a>
+                <a href="#equipe" data-page="equipe" class="px-3 py-2 rounded-lg text-sm font-medium transition duration-300 text-white hover:bg-rca-gold hover:text-rca-blue">L'Équipe</a>
+                <a href="#contact" data-page="contact" class="px-3 py-2 rounded-lg text-sm font-medium transition duration-300 text-white hover:bg-rca-gold hover:text-rca-blue">Contact & Devis</a>
+            </nav>
+
+            <!-- Bouton Mobile (Non implémenté pour la simplicité, mais le menu peut être caché) -->
+            <button class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Contenu Principal des Vues (Pages) -->
+    <main class="min-h-screen">
+        
+        <!-- ==================================== -->
+        <!-- PAGE 1: ACCUEIL (HOME) -->
+        <!-- ==================================== -->
+        <section id="accueil" class="page-section hidden">
+            <!-- Hero Section -->
+            <div class="rca-gradient text-white py-24 md:py-32">
+                <div class="container mx-auto px-4 text-center">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight">
+                        Votre partenaire <span class="text-rca-gold">comptable et financier</span> en République Centrafricaine
+                    </h1>
+                    <p class="text-xl sm:text-2xl mb-8 font-light max-w-3xl mx-auto">
+                        Sécurisez votre croissance et optimisez votre fiscalité grâce à notre expertise locale.
+                    </p>
+                    <a href="#contact" data-page="contact" class="inline-block bg-rca-gold text-rca-blue font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-105" onclick="showPage('contact'); return false;">
+                        Demander un Devis Gratuit
+                    </a>
+                </div>
+            </div>
+
+            <!-- Section Valeurs Clés -->
+            <div class="container mx-auto px-4 py-16">
+                <h2 class="text-3xl font-bold text-center text-rca-blue mb-12">Nos Engagements pour votre Succès</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Engagement 1: Localisation -->
+                    <div class="p-6 bg-rca-light rounded-2xl shadow-md card-hover transition duration-300">
+                        <div class="text-rca-blue mb-4">
+                            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Expertise Centrafricaine</h3>
+                        <p class="text-gray-600">Maîtrise complète de la législation fiscale et sociale de la RCA et de l'espace CEMAC.</p>
+                    </div>
+
+                    <!-- Engagement 2: Modernité -->
+                    <div class="p-6 bg-rca-light rounded-2xl shadow-md card-hover transition duration-300">
+                        <div class="text-rca-blue mb-4">
+                            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 1.01L7 1c-1.1 0-1.99.9-1.99 2v18c0 1.1.89 2 1.99 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Approche Digitale</h3>
+                        <p class="text-gray-600">Des solutions comptables modernes, dématérialisées et accessibles à distance pour une gestion dynamique.</p>
+                    </div>
+                    
+                    <!-- Engagement 3: Confiance -->
+                    <div class="p-6 bg-rca-light rounded-2xl shadow-md card-hover transition duration-300">
+                        <div class="text-rca-blue mb-4">
+                            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 15H9v-2h2v2zm0-4H9V8h2v4zm4-4h-2V8h2v4z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Fiabilité & Sécurité</h3>
+                        <p class="text-gray-600">Garantie de la conformité de vos comptes et de la protection de vos données financières.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================== -->
+        <!-- PAGE 2: NOS SERVICES -->
+        <!-- ==================================== -->
+        <section id="services" class="page-section hidden bg-rca-light py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-extrabold text-center text-rca-blue mb-4">L'Étendue de notre Expertise</h2>
+                <p class="text-xl text-center text-rca-text mb-12 max-w-3xl mx-auto">Nous offrons une gamme complète de services pour soutenir les entreprises, les ONG et les investisseurs en RCA.</p>
+
+                <div class="grid lg:grid-cols-2 gap-10">
+
+                    <!-- Carte 1: Comptabilité & Gestion -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-rca-gold">
+                        <h3 class="text-2xl font-bold text-rca-blue mb-4 flex items-center">
+                            <svg class="w-7 h-7 mr-3 text-rca-gold" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 5H4c-1.1 0-1.99.9-1.99 2L2 17c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-1 12H5V7h14v10zm-9-5c-1.38 0-2.5-1.12-2.5-2.5S9.62 7 11 7s2.5 1.12 2.5 2.5S12.38 12 11 12z"/></svg>
+                            Comptabilité, Reporting & Révision
+                        </h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                            <li>Tenue et supervision de la comptabilité générale et analytique.</li>
+                            <li>Établissement des états financiers (SYSCOHADA Révisé).</li>
+                            <li>Mise en place de tableaux de bord et de reporting pour les directions.</li>
+                            <li>Révision et certification des comptes.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Carte 2: Fiscalité & Déclarations -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-rca-gold">
+                        <h3 class="text-2xl font-bold text-rca-blue mb-4 flex items-center">
+                            <svg class="w-7 h-7 mr-3 text-rca-gold" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                            Conseil Fiscal et Social
+                        </h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                            <li>Optimisation et gestion des impôts et taxes (IS, TVA, etc.) en RCA.</li>
+                            <li>Assistance lors de contrôles et de contentieux fiscaux.</li>
+                            <li>Gestion de la paie et des déclarations sociales locales.</li>
+                            <li>Veille réglementaire permanente.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Carte 3: Audit Légal & Contractuel -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-rca-gold">
+                        <h3 class="text-2xl font-bold text-rca-blue mb-4 flex items-center">
+                            <svg class="w-7 h-7 mr-3 text-rca-gold" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h-2V7h4v10z"/></svg>
+                            Audit et Commissariat aux Comptes
+                        </h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                            <li>Audit légal des états financiers (Commissariat aux Comptes).</li>
+                            <li>Audit d'acquisition et due diligence.</li>
+                            <li>Audit organisationnel et des procédures internes.</li>
+                            <li>Évaluation des risques et contrôle interne.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Carte 4: Conseil & Création d'Entreprise -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-rca-gold">
+                        <h3 class="text-2xl font-bold text-rca-blue mb-4 flex items-center">
+                            <svg class="w-7 h-7 mr-3 text-rca-gold" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.76-7-4.11-7-8.93h2c0 3.86 3.14 7 7 7 1.25 0 2.45-.33 3.55-.95l.89.89C15.82 19.46 13.92 20 12 20v-.07z"/></svg>
+                            Accompagnement et Stratégie
+                        </h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
+                            <li>Aide à la création et à l'immatriculation d'entreprises en RCA.</li>
+                            <li>Élaboration de business plans et recherche de financement.</li>
+                            <li>Conseil en organisation et pilotage de la performance.</li>
+                            <li>Évaluation d'entreprises.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================== -->
+        <!-- PAGE 3: LE CABINET (ABOUT US) -->
+        <!-- ==================================== -->
+        <section id="cabinet" class="page-section hidden py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-extrabold text-center text-rca-blue mb-12">Notre Histoire, Notre Vision</h2>
+                
+                <!-- Section Mission & Vision -->
+                <div class="bg-rca-light p-10 rounded-2xl shadow-lg mb-12">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-3xl font-bold text-rca-gold mb-3">Mission</h3>
+                            <p class="text-lg text-gray-700">
+                                Être le catalyseur de la performance financière pour les acteurs économiques en République Centrafricaine, en fournissant des services d'expertise comptable rigoureux, modernes et adaptés au contexte local.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold text-rca-gold mb-3">Vision</h3>
+                            <p class="text-lg text-gray-700">
+                                Devenir le cabinet de référence en RCA, reconnu pour son excellence technique, son intégrité irréprochable et son engagement dans le développement d'une économie transparente et dynamique.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Valeurs (En icônes) -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                    <div class="p-4">
+                        <span class="text-rca-blue text-5xl mb-2 inline-block">🎯</span>
+                        <h4 class="font-semibold text-xl">Rigueur</h4>
+                        <p class="text-sm text-gray-600">Précision et conformité.</p>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-rca-blue text-5xl mb-2 inline-block">🤝</span>
+                        <h4 class="font-semibold text-xl">Proximité</h4>
+                        <p class="text-sm text-gray-600">Relation de confiance durable.</p>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-rca-blue text-5xl mb-2 inline-block">💡</span>
+                        <h4 class="font-semibold text-xl">Innovation</h4>
+                        <p class="text-sm text-gray-600">Solutions digitales modernes.</p>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-rca-blue text-5xl mb-2 inline-block">🦁</span>
+                        <h4 class="font-semibold text-xl">Intégrité</h4>
+                        <p class="text-sm text-gray-600">Éthique et transparence.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================== -->
+        <!-- PAGE 4: NOTRE ÉQUIPE -->
+        <!-- ==================================== -->
+        <section id="equipe" class="page-section hidden py-16 bg-rca-light">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-extrabold text-center text-rca-blue mb-4">Notre Équipe d'Experts</h2>
+                <p class="text-xl text-center text-rca-text mb-12 max-w-3xl mx-auto">
+                    Des experts engagés, alliant excellence technique et connaissance pointue du contexte Centrafricain.
+                </p>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Profil 1: Jean-Pierre KOUANGO (L'Expert Principal) -->
+                    <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-rca-gold text-center card-hover transition duration-300">
+                        <div class="w-32 h-32 mx-auto mb-4 bg-gray-200 rounded-full overflow-hidden border-4 border-rca-light">
+                            <!-- Image simulée de Jean-Pierre (Dark Blue/White Text) -->
+                            <img src="https://placehold.co/128x128/005080/FFFFFF/png?text=Leadership" alt="Photo de Jean-Pierre Kouango" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xl font-semibold text-rca-blue">M. Jean-Pierre KOUANGO</p>
+                        <p class="text-rca-gold font-medium mb-3">Expert-Comptable Diplômé (D.E.C.)</p>
+                        <p class="text-gray-700 text-sm italic">Fondateur du Cabinet. Il assure la direction technique et la supervision des missions d'audit complexes.</p>
+                    </div>
+
+                    <!-- Profil 2: Aïcha MBAYE -->
+                    <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-rca-blue/50 text-center card-hover transition duration-300">
+                        <div class="w-32 h-32 mx-auto mb-4 bg-gray-200 rounded-full overflow-hidden border-4 border-rca-light">
+                            <!-- Image simulée de Aïcha (Purple/White Text) -->
+                            <img src="https://placehold.co/128x128/663399/FFFFFF/png?text=Audit+Expert" alt="Photo de Aïcha Mbaye" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xl font-semibold text-rca-blue">Mme. Aïcha MBAYE</p>
+                        <p class="text-rca-gold font-medium mb-3">Chef de Mission Audit & Conseils</p>
+                        <p class="text-gray-700 text-sm italic">Spécialisée en contrôle interne et gestion des risques pour les grandes organisations et ONG.</p>
+                    </div>
+
+                    <!-- Profil 3: Didier NGALA -->
+                    <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-rca-blue/50 text-center card-hover transition duration-300">
+                        <div class="w-32 h-32 mx-auto mb-4 bg-gray-200 rounded-full overflow-hidden border-4 border-rca-light">
+                            <!-- Image simulée de Didier (Teal/White Text) -->
+                            <img src="https://placehold.co/128x128/008080/FFFFFF/png?text=Fiscalite" alt="Photo de Didier Ngala" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xl font-semibold text-rca-blue">M. Didier NGALA</p>
+                        <p class="text-rca-gold font-medium mb-3">Fiscaliste Senior & Conformité CEMAC</p>
+                        <p class="text-gray-700 text-sm italic">Notre expert en optimisation fiscale et défense des dossiers devant l'administration centrafricaine.</p>
+                    </div>
+
+                    <!-- Profil 4: Marie LISSOUBA -->
+                    <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-rca-blue/50 text-center card-hover transition duration-300">
+                        <div class="w-32 h-32 mx-auto mb-4 bg-gray-200 rounded-full overflow-hidden border-4 border-rca-light">
+                            <!-- Image simulée de Marie (Orange/White Text) -->
+                            <img src="https://placehold.co/128x128/CC6600/FFFFFF/png?text=RH+%26+Paie" alt="Photo de Marie Lissouba" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xl font-semibold text-rca-blue">Mme. Marie LISSOUBA</p>
+                        <p class="text-rca-gold font-medium mb-3">Responsable Paie et RH</p>
+                        <p class="text-gray-700 text-sm italic">Gère l'intégralité des obligations sociales, de la paie aux déclarations (CNSS) en toute confidentialité.</p>
+                    </div>
+                    
+                    <!-- Profil 5: Patrice SAMBA -->
+                    <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-rca-blue/50 text-center card-hover transition duration-300">
+                        <div class="w-32 h-32 mx-auto mb-4 bg-gray-200 rounded-full overflow-hidden border-4 border-rca-light">
+                            <!-- Image simulée de Patrice (Green/White Text) -->
+                            <img src="https://placehold.co/128x128/009933/FFFFFF/png?text=Strategie" alt="Photo de Patrice Samba" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xl font-semibold text-rca-blue">M. Patrice SAMBA</p>
+                        <p class="text-rca-gold font-medium mb-3">Consultant en Développement</p>
+                        <p class="text-gray-700 text-sm italic">Aide les entrepreneurs à démarrer, structurer et développer leur activité en RCA et à lever des fonds.</p>
+                    </div>
+                    
+                    <!-- Profil 6: Fanny OUEDRAOGO -->
+                    <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-rca-blue/50 text-center card-hover transition duration-300">
+                        <div class="w-32 h-32 mx-auto mb-4 bg-gray-200 rounded-full overflow-hidden border-4 border-rca-light">
+                            <!-- Image simulée de Fanny (Red/White Text) -->
+                            <img src="https://placehold.co/128x128/C41E3A/FFFFFF/png?text=Comptable" alt="Photo de Fanny Ouedraogo" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xl font-semibold text-rca-blue">Mme. Fanny OUEDRAOGO</p>
+                        <p class="text-rca-gold font-medium mb-3">Comptable et Gestionnaire Clientèle</p>
+                        <p class="text-gray-700 text-sm italic">Point de contact principal pour la tenue de compte quotidienne et le suivi administratif des PME.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================== -->
+        <!-- PAGE 5: CONTACT & DEVIS -->
+        <!-- ==================================== -->
+        <section id="contact" class="page-section hidden bg-rca-light py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-extrabold text-center text-rca-blue mb-12">Contactez-nous pour un Devis Personnalisé</h2>
+                
+                <div class="grid lg:grid-cols-2 gap-10">
+                    
+                    <!-- Formulaire de Contact (Mockup) -->
+                    <div class="p-8 bg-white rounded-2xl shadow-xl">
+                        <h3 class="text-2xl font-semibold text-rca-blue mb-6">Formulaire de Contact</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label for="nom" class="block text-sm font-medium text-gray-700 mb-1">Nom Complet / Raison Sociale</label>
+                                <input type="text" id="nom" name="nom" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-rca-blue focus:border-rca-blue transition duration-150">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Professionnel</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-rca-blue focus:border-rca-blue transition duration-150">
+                            </div>
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Service Recherché</label>
+                                <select id="service" name="service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-rca-blue focus:border-rca-blue transition duration-150">
+                                    <option value="">Sélectionnez un service...</option>
+                                    <option value="comptabilite">Comptabilité & Gestion</option>
+                                    <option value="fiscalite">Fiscalité & Optimisation</option>
+                                    <option value="audit">Audit Légal / Contractuel</option>
+                                    <option value="creation">Création d'Entreprise</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Votre Message / Détails du Projet</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-rca-blue focus:border-rca-blue transition duration-150"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-rca-blue text-white font-bold py-3 rounded-lg shadow-lg hover:bg-rca-gold hover:text-rca-blue transition duration-300 transform hover:scale-[1.01]">
+                                Envoyer ma Demande
+                            </button>
+                            <p id="form-message" class="text-center text-sm text-green-600 hidden mt-3"></p>
+                        </form>
+                    </div>
+
+                    <!-- Informations de Contact et Localisation -->
+                    <div class="space-y-6">
+                        <div class="p-8 bg-white rounded-2xl shadow-xl">
+                            <h3 class="text-2xl font-semibold text-rca-blue mb-4">Nos Coordonnées</h3>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 mr-3 text-rca-gold flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                    <div>
+                                        <p class="font-medium text-rca-blue">Adresse du Cabinet</p>
+                                        <p>Avenue des Martyrs, Quartier du Km 5,<br> Bangui, République Centrafricaine (RCA)</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 mr-3 text-rca-gold flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-1 5h2v6h-2z"/></svg>
+                                    <div>
+                                        <p class="font-medium text-rca-blue">Téléphone</p>
+                                        <p>(+236) XX XX XX XX</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 mr-3 text-rca-gold flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                                    <div>
+                                        <p class="font-medium text-rca-blue">Email</p>
+                                        <p>contact@expertcompta-rca.com</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Localisation (Lien vers carte) -->
+                        <div class="p-6 bg-white rounded-2xl shadow-xl text-center">
+                            <h4 class="text-xl font-semibold text-rca-blue mb-3">Nous Trouver Facilement à Bangui</h4>
+                            <a href="https://maps.app.goo.gl/XXXXXXX" target="_blank" class="inline-flex items-center bg-rca-gold text-rca-blue font-bold py-2 px-6 rounded-full hover:bg-yellow-400 transition duration-300">
+                                Voir sur la Carte 
+                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0L6.343 16.657A8 8 0 1117.657 16.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="rca-gradient text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>&copy; 2025 Expert-Comptable RCA. Tous droits réservés.</p>
+            <p class="mt-2 text-rca-gold">Professionnalisme, Rigueur, Proximité en République Centrafricaine.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript pour la gestion des pages et de la navigation -->
+    <script>
+        /**
+         * Affiche la section (page) demandée et masque les autres.
+         * Met à jour la barre de navigation.
+         * @param {string} pageId - L'ID de la section à afficher.
+         */
+        function showPage(pageId) {
+            // Masquer toutes les sections
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Afficher la section cible
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.remove('hidden');
+                // Optionnel: défiler vers le haut
+                window.scrollTo({ top: 0, behavior: 'smooth' }); 
+                updateNavActiveState(pageId);
+            }
+        }
+
+        /**
+         * Met à jour l'état actif (couleur/style) du lien de navigation.
+         * @param {string} activeId - L'ID de la page actuellement active.
+         */
+        function updateNavActiveState(activeId) {
+            document.querySelectorAll('#main-nav a').forEach(link => {
+                // Supprimer l'état actif précédent
+                link.classList.remove('bg-rca-gold', 'text-rca-blue', 'font-bold');
+                link.classList.add('text-white');
+
+                // Appliquer l'état actif
+                if (link.getAttribute('data-page') === activeId) {
+                    link.classList.remove('text-white');
+                    link.classList.add('bg-rca-gold', 'text-rca-blue', 'font-bold');
+                }
+            });
+        }
+
+        /**
+         * Gestion de l'initialisation et des événements
+         */
+        window.onload = () => {
+            // 1. Déterminer la page initiale à partir du hachage de l'URL ou par défaut 'accueil'
+            const initialPage = window.location.hash.substring(1) || 'accueil';
+            showPage(initialPage);
+
+            // 2. Gérer les changements de hachage (boutons retour/avant du navigateur)
+            window.onhashchange = () => {
+                const hashPage = window.location.hash.substring(1) || 'accueil';
+                showPage(hashPage);
+            };
+
+            // 3. Ajouter des écouteurs de clic aux liens de navigation
+            document.querySelectorAll('#main-nav a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Empêcher le comportement par défaut (rechargement de page)
+                    e.preventDefault();
+                    const pageId = link.getAttribute('data-page');
+                    // Mettre à jour le hash pour l'historique
+                    window.location.hash = pageId;
+                    showPage(pageId);
+                });
+            });
+
+            // 4. Gérer la soumission du formulaire (simulation)
+            const contactForm = document.querySelector('#contact form');
+            const formMessage = document.getElementById('form-message');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // Simuler l'envoi
+                    formMessage.textContent = "Votre demande a été envoyée avec succès ! Nous vous recontacterons sous 24h.";
+                    formMessage.classList.remove('hidden');
+                    
+                    // Réinitialiser le formulaire après un court délai
+                    setTimeout(() => {
+                        contactForm.reset();
+                        formMessage.classList.add('hidden');
+                    }, 3000);
+                });
+            }
+        };
+    </script>
+</body>
+</html>
