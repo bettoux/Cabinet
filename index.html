@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +27,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         
-        /* Styles personnalisés pour améliorer l'esthétique */
+        /* Styles personnalisés pour améliorer l'esthétique et l'accessibilité */
         .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 51, 102, 0.15);
@@ -35,11 +35,32 @@
         .rca-gradient {
             background: linear-gradient(90deg, #003366 0%, #005080 100%);
         }
-        /* Style pour les liens de navigation actifs */
-        #main-nav a.active {
+
+        /* Ajout de padding pour éviter que le contenu ne soit caché par la barre de navigation fixe */
+        section {
+            padding-top: 80px; /* Espace équivalent à la hauteur du header */
+            margin-top: -80px; /* Déplacement vers le haut pour compenser */
+        }
+        
+        /* Assurer que la première section (Accueil) ne subit pas ce décalage doublement */
+        #accueil {
+            padding-top: 0; 
+            margin-top: 0;
+        }
+
+        /* Style pour les liens de navigation (active state non nécessaire pour un one-pager simple, mais on garde le hover) */
+        .nav-link:hover {
             background-color: var(--tw-colors-rca-gold);
             color: var(--tw-colors-rca-blue);
             font-weight: bold;
+        }
+
+        /* Style pour les images de l'équipe */
+        .team-image {
+             transition: transform 0.3s ease;
+        }
+        .team-image:hover {
+             transform: scale(1.05);
         }
     </style>
 </head>
@@ -49,33 +70,34 @@
     <header class="sticky top-0 z-50 shadow-lg rca-gradient">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <!-- Logo du Cabinet -->
-            <div class="text-xl font-extrabold text-white">
+            <a href="#accueil" class="text-xl font-extrabold text-white">
                 <span class="text-rca-gold">EXPERT-COMPTA</span> RCA
-            </div>
+            </a>
 
             <!-- Navigation Principale (Desktop) -->
             <nav id="main-nav" class="hidden md:flex space-x-2 lg:space-x-4">
-                <a href="#accueil" data-page="accueil" class="px-3 py-2 rounded-lg text-sm font-medium transition duration-300 text-white hover:bg-rca-gold hover:text-rca-blue">Accueil</a>
-                <a href="#services" data-page="services" class="px-3 py-2 rounded-lg text-sm font-medium transition duration-300 text-white hover:bg-rca-gold hover:text-rca-blue">Nos Services</a>
-                <a href="#cabinet" data-page="cabinet" class="px-3 py-2 rounded-lg text-sm font-medium transition duration-300 text-white hover:bg-rca-gold hover:text-rca-blue">Le Cabinet</a>
-                <a href="#equipe" data-page="equipe" class="px-3 py-2 rounded-lg text-sm font-medium transition duration-300 text-white hover:bg-rca-gold hover:text-rca-blue">L'Équipe</a>
-                <a href="#contact" data-page="contact" class="px-3 py-2 rounded-lg text-sm font-medium transition duration-300 text-white hover:bg-rca-gold hover:text-rca-blue">Contact & Devis</a>
+                <!-- Les liens utilisent maintenant des ancres standard pour le défilement -->
+                <a href="#accueil" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition duration-300 text-white">Accueil</a>
+                <a href="#services" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition duration-300 text-white">Nos Services</a>
+                <a href="#cabinet" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition duration-300 text-white">Le Cabinet</a>
+                <a href="#equipe" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition duration-300 text-white">L'Équipe</a>
+                <a href="#contact" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition duration-300 text-white">Contact & Devis</a>
             </nav>
 
-            <!-- Bouton Mobile (Non implémenté pour la simplicité, mais le menu peut être caché) -->
+            <!-- Bouton Mobile (Non implémenté) -->
             <button class="md:hidden text-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
     </header>
     
-    <!-- Contenu Principal des Vues (Pages) -->
+    <!-- Contenu Principal des Vues (Pages) - Affichage séquentiel sur une seule page -->
     <main class="min-h-screen">
         
         <!-- ==================================== -->
-        <!-- PAGE 1: ACCUEIL (HOME) -->
+        <!-- SECTION 1: ACCUEIL (HOME) -->
         <!-- ==================================== -->
-        <section id="accueil" class="page-section hidden">
+        <section id="accueil" class="">
             <!-- Hero Section -->
             <div class="rca-gradient text-white py-24 md:py-32">
                 <div class="container mx-auto px-4 text-center">
@@ -85,13 +107,13 @@
                     <p class="text-xl sm:text-2xl mb-8 font-light max-w-3xl mx-auto">
                         Sécurisez votre croissance et optimisez votre fiscalité grâce à notre expertise locale.
                     </p>
-                    <a href="#contact" data-page="contact" class="inline-block bg-rca-gold text-rca-blue font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-105" onclick="showPage('contact'); return false;">
+                    <a href="#contact" class="inline-block bg-rca-gold text-rca-blue font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-105">
                         Demander un Devis Gratuit
                     </a>
                 </div>
             </div>
 
-            <!-- Section Valeurs Clés -->
+            <!-- Section Valeurs Clés (Continuation de l'accueil) -->
             <div class="container mx-auto px-4 py-16">
                 <h2 class="text-3xl font-bold text-center text-rca-blue mb-12">Nos Engagements pour votre Succès</h2>
                 <div class="grid md:grid-cols-3 gap-8">
@@ -126,9 +148,9 @@
         </section>
 
         <!-- ==================================== -->
-        <!-- PAGE 2: NOS SERVICES -->
+        <!-- SECTION 2: NOS SERVICES -->
         <!-- ==================================== -->
-        <section id="services" class="page-section hidden bg-rca-light py-16">
+        <section id="services" class="bg-rca-light py-16">
             <div class="container mx-auto px-4">
                 <h2 class="text-4xl font-extrabold text-center text-rca-blue mb-4">L'Étendue de notre Expertise</h2>
                 <p class="text-xl text-center text-rca-text mb-12 max-w-3xl mx-auto">Nous offrons une gamme complète de services pour soutenir les entreprises, les ONG et les investisseurs en RCA.</p>
@@ -195,9 +217,9 @@
         </section>
 
         <!-- ==================================== -->
-        <!-- PAGE 3: LE CABINET (ABOUT US) -->
+        <!-- SECTION 3: LE CABINET (ABOUT US) -->
         <!-- ==================================== -->
-        <section id="cabinet" class="page-section hidden py-16">
+        <section id="cabinet" class="py-16">
             <div class="container mx-auto px-4">
                 <h2 class="text-4xl font-extrabold text-center text-rca-blue mb-12">Notre Histoire, Notre Vision</h2>
                 
@@ -246,9 +268,9 @@
         </section>
 
         <!-- ==================================== -->
-        <!-- PAGE 4: NOTRE ÉQUIPE -->
+        <!-- SECTION 4: NOTRE ÉQUIPE -->
         <!-- ==================================== -->
-        <section id="equipe" class="page-section hidden py-16 bg-rca-light">
+        <section id="equipe" class="py-16 bg-rca-light">
             <div class="container mx-auto px-4">
                 <h2 class="text-4xl font-extrabold text-center text-rca-blue mb-4">Notre Équipe d'Experts</h2>
                 <p class="text-xl text-center text-rca-text mb-12 max-w-3xl mx-auto">
@@ -261,7 +283,7 @@
                     <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-rca-gold text-center card-hover transition duration-300">
                         <div class="w-32 h-32 mx-auto mb-4 bg-gray-200 rounded-full overflow-hidden border-4 border-rca-light">
                             <!-- Image simulée de Jean-Pierre (Dark Blue/White Text) -->
-                            <img src="https://placehold.co/128x128/005080/FFFFFF/png?text=Leadership" alt="Photo de Jean-Pierre Kouango" class="w-full h-full object-cover">
+                            <img src="https://placehold.co/128x128/005080/FFFFFF/png?text=Leadership" alt="Photo de Jean-Pierre Kouango" class="w-full h-full object-cover team-image">
                         </div>
                         <p class="text-xl font-semibold text-rca-blue">M. Jean-Pierre KOUANGO</p>
                         <p class="text-rca-gold font-medium mb-3">Expert-Comptable Diplômé (D.E.C.)</p>
@@ -272,7 +294,7 @@
                     <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-rca-blue/50 text-center card-hover transition duration-300">
                         <div class="w-32 h-32 mx-auto mb-4 bg-gray-200 rounded-full overflow-hidden border-4 border-rca-light">
                             <!-- Image simulée de Aïcha (Purple/White Text) -->
-                            <img src="https://placehold.co/128x128/663399/FFFFFF/png?text=Audit+Expert" alt="Photo de Aïcha Mbaye" class="w-full h-full object-cover">
+                            <img src="https://placehold.co/128x128/663399/FFFFFF/png?text=Audit+Expert" alt="Photo de Aïcha Mbaye" class="w-full h-full object-cover team-image">
                         </div>
                         <p class="text-xl font-semibold text-rca-blue">Mme. Aïcha MBAYE</p>
                         <p class="text-rca-gold font-medium mb-3">Chef de Mission Audit & Conseils</p>
@@ -283,7 +305,7 @@
                     <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-rca-blue/50 text-center card-hover transition duration-300">
                         <div class="w-32 h-32 mx-auto mb-4 bg-gray-200 rounded-full overflow-hidden border-4 border-rca-light">
                             <!-- Image simulée de Didier (Teal/White Text) -->
-                            <img src="https://placehold.co/128x128/008080/FFFFFF/png?text=Fiscalite" alt="Photo de Didier Ngala" class="w-full h-full object-cover">
+                            <img src="https://placehold.co/128x128/008080/FFFFFF/png?text=Fiscalite" alt="Photo de Didier Ngala" class="w-full h-full object-cover team-image">
                         </div>
                         <p class="text-xl font-semibold text-rca-blue">M. Didier NGALA</p>
                         <p class="text-rca-gold font-medium mb-3">Fiscaliste Senior & Conformité CEMAC</p>
@@ -294,10 +316,10 @@
                     <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-rca-blue/50 text-center card-hover transition duration-300">
                         <div class="w-32 h-32 mx-auto mb-4 bg-gray-200 rounded-full overflow-hidden border-4 border-rca-light">
                             <!-- Image simulée de Marie (Orange/White Text) -->
-                            <img src="https://placehold.co/128x128/CC6600/FFFFFF/png?text=RH+%26+Paie" alt="Photo de Marie Lissouba" class="w-full h-full object-cover">
+                            <img src="https://placehold.co/128x128/CC6600/FFFFFF/png?text=RH+%26+Paie" alt="Photo de Marie Lissouba" class="w-full h-full object-cover team-image">
                         </div>
                         <p class="text-xl font-semibold text-rca-blue">Mme. Marie LISSOUBA</p>
-                        <p class="text-rca-gold font-medium mb-3">Responsable Paie et RH</p>
+                        <p class="rca-gold font-medium mb-3">Responsable Paie et RH</p>
                         <p class="text-gray-700 text-sm italic">Gère l'intégralité des obligations sociales, de la paie aux déclarations (CNSS) en toute confidentialité.</p>
                     </div>
                     
@@ -305,10 +327,10 @@
                     <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-rca-blue/50 text-center card-hover transition duration-300">
                         <div class="w-32 h-32 mx-auto mb-4 bg-gray-200 rounded-full overflow-hidden border-4 border-rca-light">
                             <!-- Image simulée de Patrice (Green/White Text) -->
-                            <img src="https://placehold.co/128x128/009933/FFFFFF/png?text=Strategie" alt="Photo de Patrice Samba" class="w-full h-full object-cover">
+                            <img src="https://placehold.co/128x128/009933/FFFFFF/png?text=Strategie" alt="Photo de Patrice Samba" class="w-full h-full object-cover team-image">
                         </div>
                         <p class="text-xl font-semibold text-rca-blue">M. Patrice SAMBA</p>
-                        <p class="text-rca-gold font-medium mb-3">Consultant en Développement</p>
+                        <p class="rca-gold font-medium mb-3">Consultant en Développement</p>
                         <p class="text-gray-700 text-sm italic">Aide les entrepreneurs à démarrer, structurer et développer leur activité en RCA et à lever des fonds.</p>
                     </div>
                     
@@ -316,10 +338,10 @@
                     <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-rca-blue/50 text-center card-hover transition duration-300">
                         <div class="w-32 h-32 mx-auto mb-4 bg-gray-200 rounded-full overflow-hidden border-4 border-rca-light">
                             <!-- Image simulée de Fanny (Red/White Text) -->
-                            <img src="https://placehold.co/128x128/C41E3A/FFFFFF/png?text=Comptable" alt="Photo de Fanny Ouedraogo" class="w-full h-full object-cover">
+                            <img src="https://placehold.co/128x128/C41E3A/FFFFFF/png?text=Comptable" alt="Photo de Fanny Ouedraogo" class="w-full h-full object-cover team-image">
                         </div>
                         <p class="text-xl font-semibold text-rca-blue">Mme. Fanny OUEDRAOGO</p>
-                        <p class="text-rca-gold font-medium mb-3">Comptable et Gestionnaire Clientèle</p>
+                        <p class="rca-gold font-medium mb-3">Comptable et Gestionnaire Clientèle</p>
                         <p class="text-gray-700 text-sm italic">Point de contact principal pour la tenue de compte quotidienne et le suivi administratif des PME.</p>
                     </div>
 
@@ -328,9 +350,9 @@
         </section>
 
         <!-- ==================================== -->
-        <!-- PAGE 5: CONTACT & DEVIS -->
+        <!-- SECTION 5: CONTACT & DEVIS -->
         <!-- ==================================== -->
-        <section id="contact" class="page-section hidden bg-rca-light py-16">
+        <section id="contact" class="bg-rca-light py-16">
             <div class="container mx-auto px-4">
                 <h2 class="text-4xl font-extrabold text-center text-rca-blue mb-12">Contactez-nous pour un Devis Personnalisé</h2>
                 
@@ -339,7 +361,7 @@
                     <!-- Formulaire de Contact (Mockup) -->
                     <div class="p-8 bg-white rounded-2xl shadow-xl">
                         <h3 class="text-2xl font-semibold text-rca-blue mb-6">Formulaire de Contact</h3>
-                        <form class="space-y-4">
+                        <form class="space-y-4" id="contact-form">
                             <div>
                                 <label for="nom" class="block text-sm font-medium text-gray-700 mb-1">Nom Complet / Raison Sociale</label>
                                 <input type="text" id="nom" name="nom" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-rca-blue focus:border-rca-blue transition duration-150">
@@ -422,75 +444,11 @@
         </div>
     </footer>
 
-    <!-- JavaScript pour la gestion des pages et de la navigation -->
+    <!-- JavaScript pour la gestion du formulaire -->
     <script>
-        /**
-         * Affiche la section (page) demandée et masque les autres.
-         * Met à jour la barre de navigation.
-         * @param {string} pageId - L'ID de la section à afficher.
-         */
-        function showPage(pageId) {
-            // Masquer toutes les sections
-            document.querySelectorAll('.page-section').forEach(section => {
-                section.classList.add('hidden');
-            });
-            
-            // Afficher la section cible
-            const target = document.getElementById(pageId);
-            if (target) {
-                target.classList.remove('hidden');
-                // Optionnel: défiler vers le haut
-                window.scrollTo({ top: 0, behavior: 'smooth' }); 
-                updateNavActiveState(pageId);
-            }
-        }
-
-        /**
-         * Met à jour l'état actif (couleur/style) du lien de navigation.
-         * @param {string} activeId - L'ID de la page actuellement active.
-         */
-        function updateNavActiveState(activeId) {
-            document.querySelectorAll('#main-nav a').forEach(link => {
-                // Supprimer l'état actif précédent
-                link.classList.remove('bg-rca-gold', 'text-rca-blue', 'font-bold');
-                link.classList.add('text-white');
-
-                // Appliquer l'état actif
-                if (link.getAttribute('data-page') === activeId) {
-                    link.classList.remove('text-white');
-                    link.classList.add('bg-rca-gold', 'text-rca-blue', 'font-bold');
-                }
-            });
-        }
-
-        /**
-         * Gestion de l'initialisation et des événements
-         */
-        window.onload = () => {
-            // 1. Déterminer la page initiale à partir du hachage de l'URL ou par défaut 'accueil'
-            const initialPage = window.location.hash.substring(1) || 'accueil';
-            showPage(initialPage);
-
-            // 2. Gérer les changements de hachage (boutons retour/avant du navigateur)
-            window.onhashchange = () => {
-                const hashPage = window.location.hash.substring(1) || 'accueil';
-                showPage(hashPage);
-            };
-
-            // 3. Ajouter des écouteurs de clic aux liens de navigation
-            document.querySelectorAll('#main-nav a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    // Empêcher le comportement par défaut (rechargement de page)
-                    e.preventDefault();
-                    const pageId = link.getAttribute('data-page');
-                    // Mettre à jour le hash pour l'historique
-                    window.location.hash = pageId;
-                    showPage(pageId);
-                });
-            });
-
-            // 4. Gérer la soumission du formulaire (simulation)
-            const contactForm = document.querySelector('#contact form');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Gérer la soumission du formulaire (simulation)
+            const contactForm = document.getElementById('contact-form');
             const formMessage = document.getElementById('form-message');
 
             if (contactForm) {
@@ -508,7 +466,7 @@
                     }, 3000);
                 });
             }
-        };
+        });
     </script>
 </body>
 </html>
